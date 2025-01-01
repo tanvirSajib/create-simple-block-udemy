@@ -20,16 +20,19 @@ import './editor.scss';
 
 
 export default function Edit({attributes, setAttributes}) {
-	const {text, alignment} = attributes;	
-
+	const { text, alignment, backgroundColor, textColor } = attributes;
 	const onChangeAlignment = ( newAlignment ) => {
 		setAttributes( { alignment: newAlignment } );
 	};
 	const onChangeText = ( newText ) => {
 		setAttributes( { text: newText } );
 	};
+	const onBackgroundColorChange = ( newBgColor ) => {
+		setAttributes( { backgroundColor: newBgColor } );
+	};
 
-	
+
+
 	return (
 		<>
 
@@ -39,34 +42,14 @@ export default function Edit({attributes, setAttributes}) {
 					icon="admin-appearance"
 					initialOpen
 				>
-					<TextControl
-						label="Input Label"
-						value={ text }
-						onChange={ onChangeText }
-						help="help text"
-					/>
-					<TextareaControl
-						label="Text Area Label"
-						value={ text }
-						onChange={ onChangeText }
-						help="help text"
-					/>
-					<ToggleControl
-						label="Toggle Label"
-						checked={ true }
-						onChange={ ( v ) => console.log( v ) }
-					/>
-					<AnglePickerControl />
-					<ColorPicker
-						color={ 'F03' }
-						onChangeComplete={ ( v ) => console.log( v ) }
-					/>
+					
 					<ColorPalette
 						colors={ [
 							{ name: 'red', color: '#F00' },
 							{ name: 'black', color: '#000' },
 						] }
-						onChange={ ( v ) => console.log( v ) }
+						value={backgroundColor}
+						onChange={ onBackgroundColorChange }
 					/>
 				</PanelBody>
 			</InspectorControls>
@@ -74,7 +57,7 @@ export default function Edit({attributes, setAttributes}) {
 		<BlockControls >
 			<AlignmentToolbar 
 			value={alignment}
-			onChange={(value) => setAttributes({alignment : value})} 
+			onChange={onChangeAlignment} 
 			/>
 		</BlockControls>
 
@@ -82,11 +65,14 @@ export default function Edit({attributes, setAttributes}) {
 		<RichText 
 		{ ...useBlockProps({
 			className: `text-box-align-${ alignment }`,
+			style:{
+				backgroundColor: backgroundColor
+			}
 		}) } 
 		placeholder={__('Your Text', 'text-domain')} 
 		tagName='h4' 
 		allowedFormats={[]} 
-		onChange={(val) => setAttributes({text:val})}
+		onChange={onChangeText}
 		value={text}		
 		/>	
 

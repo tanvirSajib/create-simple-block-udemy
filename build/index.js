@@ -32,7 +32,9 @@ function Edit({
 }) {
   const {
     text,
-    alignment
+    alignment,
+    backgroundColor,
+    textColor
   } = attributes;
   const onChangeAlignment = newAlignment => {
     setAttributes({
@@ -44,30 +46,18 @@ function Edit({
       text: newText
     });
   };
+  const onBackgroundColorChange = newBgColor => {
+    setAttributes({
+      backgroundColor: newBgColor
+    });
+  };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
         title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Color Settings', 'text-box'),
         icon: "admin-appearance",
         initialOpen: true,
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextControl, {
-          label: "Input Label",
-          value: text,
-          onChange: onChangeText,
-          help: "help text"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.TextareaControl, {
-          label: "Text Area Label",
-          value: text,
-          onChange: onChangeText,
-          help: "help text"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
-          label: "Toggle Label",
-          checked: true,
-          onChange: v => console.log(v)
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.AnglePickerControl, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPicker, {
-          color: 'F03',
-          onChangeComplete: v => console.log(v)
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPalette, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPalette, {
           colors: [{
             name: 'red',
             color: '#F00'
@@ -75,26 +65,26 @@ function Edit({
             name: 'black',
             color: '#000'
           }],
-          onChange: v => console.log(v)
-        })]
+          value: backgroundColor,
+          onChange: onBackgroundColorChange
+        })
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.BlockControls, {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.AlignmentToolbar, {
         value: alignment,
-        onChange: value => setAttributes({
-          alignment: value
-        })
+        onChange: onChangeAlignment
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
       ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)({
-        className: `text-box-align-${alignment}`
+        className: `text-box-align-${alignment}`,
+        style: {
+          backgroundColor: backgroundColor
+        }
       }),
       placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Your Text', 'text-domain'),
       tagName: "h4",
       allowedFormats: [],
-      onChange: val => setAttributes({
-        text: val
-      }),
+      onChange: onChangeText,
       value: text
     })]
   });
@@ -158,11 +148,16 @@ function save({
 }) {
   const {
     text,
-    alignment
+    alignment,
+    backgroundColor,
+    textColor
   } = attributes;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.RichText.Content, {
     ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save({
-      className: `text-box-align-${alignment}`
+      className: `text-box-align-${alignment}`,
+      style: {
+        backgroundColor: backgroundColor
+      }
     }),
     value: text,
     tagName: "h4"
@@ -251,7 +246,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/create-simple-block-udemy","version":"0.1.0","title":"Create Simple Block Udemy","category":"text","icon":"text-page","description":"A box of text","keywords":["text","paragraph","box"],"example":{},"supports":{"html":false},"attributes":{"text":{"type":"string","source":"html","selector":"h4"},"alignment":{"type":"string","default":"left"}},"textdomain":"create-simple-block-udemy","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/create-simple-block-udemy","version":"0.1.0","title":"Create Simple Block Udemy","category":"text","icon":"text-page","description":"A box of text","keywords":["text","paragraph","box"],"example":{},"supports":{"html":false},"attributes":{"text":{"type":"string","source":"html","selector":"h4"},"alignment":{"type":"string","default":"left"},"backgroundColor":{"type":"string"},"textColor":{"type":"string"}},"textdomain":"create-simple-block-udemy","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 
