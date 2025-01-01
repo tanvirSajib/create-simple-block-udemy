@@ -12,5 +12,14 @@
   color: #fff;
   padding: 2px;
 }
+.wp-block-create-block-create-simple-block-udemy.text-box-align-right {
+  text-align: right;
+}
+.wp-block-create-block-create-simple-block-udemy.text-box-align-center {
+  text-align: center;
+}
+.wp-block-create-block-create-simple-block-udemy.text-box-align-left {
+  text-align: left;
+}
 
 /*# sourceMappingURL=style-index.css.map*/

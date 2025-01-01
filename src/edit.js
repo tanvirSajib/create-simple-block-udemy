@@ -18,13 +18,14 @@ export default function Edit({attributes, setAttributes}) {
 
 		
 		<RichText 
-		{ ...useBlockProps() } 
+		{ ...useBlockProps({
+			className: `text-box-align-${ alignment }`,
+		}) } 
 		placeholder={__('Your Text', 'text-domain')} 
 		tagName='h4' 
 		allowedFormats={[]} 
 		onChange={(val) => setAttributes({text:val})}
-		value={text}
-		style={{textAlign: alignment}}
+		value={text}		
 		/>	
 
 		</>		

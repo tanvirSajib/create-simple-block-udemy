@@ -43,17 +43,16 @@ function Edit({
         })
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
-      ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)(),
+      ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)({
+        className: `text-box-align-${alignment}`
+      }),
       placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Your Text', 'text-domain'),
       tagName: "h4",
       allowedFormats: [],
       onChange: val => setAttributes({
         text: val
       }),
-      value: text,
-      style: {
-        textAlign: alignment
-      }
+      value: text
     })]
   });
 }
@@ -115,10 +114,13 @@ function save({
   attributes
 }) {
   const {
-    text
+    text,
+    alignment
   } = attributes;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.RichText.Content, {
-    ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save(),
+    ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save({
+      className: `text-box-align-${alignment}`
+    }),
     value: text,
     tagName: "h4"
   });
