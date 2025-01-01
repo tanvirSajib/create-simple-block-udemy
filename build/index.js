@@ -31,53 +31,16 @@ function Edit({
   setAttributes
 }) {
   const {
-    text
+    text,
+    alignment
   } = attributes;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.BlockControls, {
-      group: "inline",
-      children: "Inlin controls"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.BlockControls, {
-      group: "block",
-      children: "Block Controls"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.BlockControls, {
-      group: "other",
-      controls: [{
-        title: 'Button 1',
-        icon: 'admin-generic',
-        isActive: true,
-        onClick: () => console.log('Button 1 Clicked')
-      }, {
-        title: 'Button 2',
-        icon: 'admin-collapse',
-        onClick: () => console.log("Button 2 Clicked")
-      }],
-      children: text && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToolbarGroup, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-          children: "Some text"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToolbarButton, {
-          title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Align Left', 'text-box'),
-          icon: "editor-alignleft",
-          onClick: () => console.log('Align Left')
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToolbarButton, {
-          title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Align Center', 'text-box'),
-          icon: "editor-aligncenter",
-          onClick: () => console.log('Align center')
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToolbarButton, {
-          title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Align Right', 'text-box'),
-          icon: "editor-alignright",
-          onClick: () => console.log('Align Right')
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToolbarDropdownMenu, {
-          icon: "arrow-down-alt2",
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('More Alignments', 'text-box'),
-          controls: [{
-            title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Wide', 'text-box'),
-            icon: 'align-wide'
-          }, {
-            title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Full', 'text-box'),
-            icon: 'align-full-width'
-          }]
-        })]
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.AlignmentToolbar, {
+        value: alignment,
+        onChange: value => setAttributes({
+          alignment: value
+        })
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
       ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)(),
@@ -87,7 +50,10 @@ function Edit({
       onChange: val => setAttributes({
         text: val
       }),
-      value: text
+      value: text,
+      style: {
+        textAlign: alignment
+      }
     })]
   });
 }
@@ -240,7 +206,7 @@ module.exports = window["wp"]["i18n"];
   \************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/create-simple-block-udemy","version":"0.1.0","title":"Create Simple Block Udemy","category":"text","icon":"text-page","description":"A box of text","keywords":["text","paragraph","box"],"example":{},"supports":{"html":false},"attributes":{"text":{"type":"string","source":"html","selector":"h4"}},"textdomain":"create-simple-block-udemy","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/create-simple-block-udemy","version":"0.1.0","title":"Create Simple Block Udemy","category":"text","icon":"text-page","description":"A box of text","keywords":["text","paragraph","box"],"example":{},"supports":{"html":false},"attributes":{"text":{"type":"string","source":"html","selector":"h4"},"alignment":{"type":"string","default":"left"}},"textdomain":"create-simple-block-udemy","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 
