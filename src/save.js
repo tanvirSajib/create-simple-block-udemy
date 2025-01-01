@@ -16,7 +16,8 @@ export default function save({attributes}) {
 		<RichText.Content { ...useBlockProps.save({
 			className: `text-box-align-${ alignment }`,
 			style:{
-				backgroundColor: backgroundColor
+				backgroundColor,
+				color: textColor,
 			}
 		}) } value={text} tagName='h4' />
 			

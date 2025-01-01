@@ -5,16 +5,10 @@ import {
 	BlockControls,
 	InspectorControls,
 	AlignmentToolbar,
+	PanelColorSettings,
+	ContrastChecker,
 } from '@wordpress/block-editor';
-import {
-	PanelBody,
-	TextControl,
-	TextareaControl,
-	ToggleControl,
-	AnglePickerControl,
-	ColorPicker,
-	ColorPalette,
-} from '@wordpress/components';
+
 import './editor.scss';
 
 
@@ -30,6 +24,10 @@ export default function Edit({attributes, setAttributes}) {
 	const onBackgroundColorChange = ( newBgColor ) => {
 		setAttributes( { backgroundColor: newBgColor } );
 	};
+	const onTextColorChange = ( newTextColor ) => {
+		setAttributes( { textColor: newTextColor } );
+	};
+
 
 
 
@@ -37,21 +35,30 @@ export default function Edit({attributes, setAttributes}) {
 		<>
 
 			<InspectorControls>
-				<PanelBody
-					title={ __( 'Color Settings', 'text-box' ) }
+				<PanelColorSettings 
+				
+				title={ __( 'Color Settings', 'text-box' ) }
 					icon="admin-appearance"
 					initialOpen
-				>
-					
-					<ColorPalette
-						colors={ [
-							{ name: 'red', color: '#F00' },
-							{ name: 'black', color: '#000' },
-						] }
-						value={backgroundColor}
-						onChange={ onBackgroundColorChange }
-					/>
-				</PanelBody>
+					disableCustomColors= { false }
+					colorSettings={[
+						{
+							value: backgroundColor,
+							onChange: onBackgroundColorChange,
+							label: __( 'Background Color', 'text-box' ),
+						},
+						{
+							value: textColor,
+							onChange: onTextColorChange,
+							label: __( 'Text Color', 'text-box' ),
+						},
+					]}
+					>
+						<ContrastChecker
+							textColor={ textColor }
+							backgroundColor={ backgroundColor }
+						/>
+					</PanelColorSettings>
 			</InspectorControls>
 		
 		<BlockControls >
@@ -66,7 +73,8 @@ export default function Edit({attributes, setAttributes}) {
 		{ ...useBlockProps({
 			className: `text-box-align-${ alignment }`,
 			style:{
-				backgroundColor: backgroundColor
+				backgroundColor,
+				color: textColor,
 			}
 		}) } 
 		placeholder={__('Your Text', 'text-domain')} 
