@@ -7,58 +7,61 @@ import {
 	AlignmentToolbar,
 	PanelColorSettings,
 	ContrastChecker,
+	withColors,
 } from '@wordpress/block-editor';
 
 import './editor.scss';
 
 
 
-export default function Edit({attributes, setAttributes}) {
-	const { text, alignment, backgroundColor, textColor } = attributes;
+function Edit( props ) {
+	const {
+		attributes,
+		setAttributes,
+		backgroundColor,
+		textColor,
+		setBackgroundColor,
+		setTextColor,
+	} = props;
+	const { text, alignment } = attributes;	
+
+
 	const onChangeAlignment = ( newAlignment ) => {
 		setAttributes( { alignment: newAlignment } );
 	};
 	const onChangeText = ( newText ) => {
 		setAttributes( { text: newText } );
 	};
-	const onBackgroundColorChange = ( newBgColor ) => {
-		setAttributes( { backgroundColor: newBgColor } );
-	};
-	const onTextColorChange = ( newTextColor ) => {
-		setAttributes( { textColor: newTextColor } );
-	};
-
-
+	
 
 
 	return (
 		<>
 
-			<InspectorControls>
-				<PanelColorSettings 
-				
-				title={ __( 'Color Settings', 'text-box' ) }
+<InspectorControls>
+				<PanelColorSettings
+					title={ __( 'Color Settings', 'text-box' ) }
 					icon="admin-appearance"
 					initialOpen
-					disableCustomColors= { false }
-					colorSettings={[
+					disableCustomColors={ false }
+					colorSettings={ [
 						{
-							value: backgroundColor,
-							onChange: onBackgroundColorChange,
+							value: backgroundColor.color,
+							onChange: setBackgroundColor,
 							label: __( 'Background Color', 'text-box' ),
 						},
 						{
-							value: textColor,
-							onChange: onTextColorChange,
+							value: textColor.color,
+							onChange: setTextColor,
 							label: __( 'Text Color', 'text-box' ),
 						},
-					]}
-					>
-						<ContrastChecker
-							textColor={ textColor }
-							backgroundColor={ backgroundColor }
-						/>
-					</PanelColorSettings>
+					] }
+				>
+					<ContrastChecker
+						textColor={ textColor.color }
+						backgroundColor={ backgroundColor.color }
+					/>
+				</PanelColorSettings>
 			</InspectorControls>
 		
 		<BlockControls >
@@ -73,8 +76,8 @@ export default function Edit({attributes, setAttributes}) {
 		{ ...useBlockProps({
 			className: `text-box-align-${ alignment }`,
 			style:{
-				backgroundColor,
-				color: textColor,
+				backgroundColor: backgroundColor.color,
+				color: textColor.color,
 			}
 		}) } 
 		placeholder={__('Your Text', 'text-domain')} 
@@ -87,3 +90,8 @@ export default function Edit({attributes, setAttributes}) {
 		</>		
 	);
 }
+
+export default withColors({
+	backgroundColor: 'backgroundColor',
+	textColor: 'color',
+})(Edit)
