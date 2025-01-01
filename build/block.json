@@ -4,9 +4,14 @@
   "name": "create-block/create-simple-block-udemy",
   "version": "0.1.0",
   "title": "Create Simple Block Udemy",
-  "category": "widgets",
-  "icon": "smiley",
-  "description": "Example block scaffolded with Create Block tool.",
+  "category": "text",
+  "icon": "text-page",
+  "description": "A box of text",
+  "keywords": [
+    "text",
+    "paragraph",
+    "box"
+  ],
   "example": {},
   "supports": {
     "html": false

@@ -18,7 +18,7 @@ import { useBlockProps } from '@wordpress/block-editor';
 export default function save() {
 	return (
 		<p { ...useBlockProps.save() }>
-			{ 'Create Simple Block Udemy – hello from the saved content!' }
+			{ 'Create Simple Block sdd Udemy – hello from the saved content!' }
 		</p>
 	);
 }
