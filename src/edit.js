@@ -1,15 +1,18 @@
 import { __ } from '@wordpress/i18n'; 
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, RichText } from '@wordpress/block-editor';
 import './editor.scss';
 
 
-export default function Edit() {
+export default function Edit({attributes, setAttributes}) {
+	const {text} = attributes;
 	return (
-		<p { ...useBlockProps() }>
-			{ __(
-				'Create Simple Block Udemy – fsdfds hello from the editor!',
-				'create-simple-block-udemy'
-			) }
-		</p>
+		<RichText 
+		{ ...useBlockProps() } 
+		placeholder={__('Your Text', 'text-domain')} 
+		tagName='h4' 
+		allowedFormats={['core/bold']} 
+		onChange={(val) => setAttributes({text:val})}
+		value={text}
+		/>			
 	);
 }
