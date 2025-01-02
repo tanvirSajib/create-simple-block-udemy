@@ -2,26 +2,18 @@ import { __ } from '@wordpress/i18n';
 import {
 	useBlockProps,
 	RichText,
-	BlockControls,
-	InspectorControls,
-	AlignmentToolbar,
-	PanelColorSettings,
-	ContrastChecker,
-	withColors,
+	BlockControls,	
+	AlignmentToolbar,	
 } from '@wordpress/block-editor';
 
 import './editor.scss';
 
 
 
-function Edit( props ) {
+export default function Edit( props ) {
 	const {
 		attributes,
-		setAttributes,
-		backgroundColor,
-		textColor,
-		setBackgroundColor,
-		setTextColor,
+		setAttributes,			
 	} = props;
 	const { text, alignment } = attributes;	
 
@@ -38,32 +30,7 @@ function Edit( props ) {
 	return (
 		<>
 
-<InspectorControls>
-				<PanelColorSettings
-					title={ __( 'Color Settings', 'text-box' ) }
-					icon="admin-appearance"
-					initialOpen
-					disableCustomColors={ false }
-					colorSettings={ [
-						{
-							value: backgroundColor.color,
-							onChange: setBackgroundColor,
-							label: __( 'Background Color', 'text-box' ),
-						},
-						{
-							value: textColor.color,
-							onChange: setTextColor,
-							label: __( 'Text Color', 'text-box' ),
-						},
-					] }
-				>
-					<ContrastChecker
-						textColor={ textColor.color }
-						backgroundColor={ backgroundColor.color }
-					/>
-				</PanelColorSettings>
-			</InspectorControls>
-		
+
 		<BlockControls >
 			<AlignmentToolbar 
 			value={alignment}
@@ -74,11 +41,7 @@ function Edit( props ) {
 		
 		<RichText 
 		{ ...useBlockProps({
-			className: `text-box-align-${ alignment }`,
-			style:{
-				backgroundColor: backgroundColor.color,
-				color: textColor.color,
-			}
+			className: `text-box-align-${ alignment }`,			
 		}) } 
 		placeholder={__('Your Text', 'text-domain')} 
 		tagName='h4' 
@@ -91,7 +54,3 @@ function Edit( props ) {
 	);
 }
 
-export default withColors({
-	backgroundColor: 'backgroundColor',
-	textColor: 'color',
-})(Edit)

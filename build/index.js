@@ -10,7 +10,7 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */   "default": () => (/* binding */ Edit)
 /* harmony export */ });
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
@@ -26,11 +26,7 @@ __webpack_require__.r(__webpack_exports__);
 function Edit(props) {
   const {
     attributes,
-    setAttributes,
-    backgroundColor,
-    textColor,
-    setBackgroundColor,
-    setTextColor
+    setAttributes
   } = props;
   const {
     text,
@@ -47,38 +43,14 @@ function Edit(props) {
     });
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.PanelColorSettings, {
-        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Color Settings', 'text-box'),
-        icon: "admin-appearance",
-        initialOpen: true,
-        disableCustomColors: false,
-        colorSettings: [{
-          value: backgroundColor.color,
-          onChange: setBackgroundColor,
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Background Color', 'text-box')
-        }, {
-          value: textColor.color,
-          onChange: setTextColor,
-          label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Text Color', 'text-box')
-        }],
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.ContrastChecker, {
-          textColor: textColor.color,
-          backgroundColor: backgroundColor.color
-        })
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.BlockControls, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.BlockControls, {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.AlignmentToolbar, {
         value: alignment,
         onChange: onChangeAlignment
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
       ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)({
-        className: `text-box-align-${alignment}`,
-        style: {
-          backgroundColor: backgroundColor.color,
-          color: textColor.color
-        }
+        className: `text-box-align-${alignment}`
       }),
       placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)('Your Text', 'text-domain'),
       tagName: "h4",
@@ -88,10 +60,6 @@ function Edit(props) {
     })]
   });
 }
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.withColors)({
-  backgroundColor: 'backgroundColor',
-  textColor: 'color'
-})(Edit));
 
 /***/ }),
 
@@ -156,26 +124,12 @@ function save({
 }) {
   const {
     text,
-    alignment,
-    backgroundColor,
-    textColor,
-    customBackgroundColor,
-    customTextColor
+    alignment
   } = attributes;
-  const backgroundClass = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.getColorClassName)('background-color', backgroundColor);
-  const textClass = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.getColorClassName)('color', textColor);
-  const classes = classnames__WEBPACK_IMPORTED_MODULE_1___default()(`text-box-align-${alignment}`, {
-    [textClass]: textClass,
-    [backgroundClass]: backgroundClass
-  });
-  console.log(classes);
+  const classes = classnames__WEBPACK_IMPORTED_MODULE_1___default()(`text-box-align-${alignment}`);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.RichText.Content, {
     ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save({
-      className: classes,
-      style: {
-        backgroundColor: backgroundClass ? undefined : customBackgroundColor,
-        color: textClass ? undefined : customTextColor
-      }
+      className: classes
     }),
     value: text,
     tagName: "h4"
@@ -347,7 +301,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 /***/ ((module) => {
 
 "use strict";
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/create-simple-block-udemy","version":"0.1.0","title":"Create Simple Block Udemy","category":"text","icon":"text-page","description":"A box of text","keywords":["text","paragraph","box"],"example":{},"supports":{"html":false},"attributes":{"text":{"type":"string","source":"html","selector":"h4"},"alignment":{"type":"string","default":"left"},"backgroundColor":{"type":"string"},"textColor":{"type":"string"},"customBackgroundColor":{"type":"string"},"customTextColor":{"type":"string"}},"textdomain":"create-simple-block-udemy","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/create-simple-block-udemy","version":"0.1.0","title":"Create Simple Block Udemy","category":"text","icon":"text-page","description":"A box of text","keywords":["text","paragraph","box"],"example":{},"supports":{"html":false,"color":{"background":true,"text":true,"gradients":true}},"attributes":{"text":{"type":"string","source":"html","selector":"h4"},"alignment":{"type":"string","default":"left"},"backgroundColor":{"type":"string"},"textColor":{"type":"string"}},"textdomain":"create-simple-block-udemy","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 

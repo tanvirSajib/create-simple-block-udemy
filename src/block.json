@@ -10,7 +10,12 @@
 	"keywords": ["text", "paragraph", "box"],
 	"example": {},
 	"supports": {
-		"html": false
+		"html": false,
+		"color": {
+			"background": true,
+			"text": true,
+			"gradients": true
+		}
 	},
 	"attributes": {
 		"text": {
@@ -26,12 +31,6 @@
 			"type": "string"
 		},
 		"textColor": {
-			"type": "string"
-		},
-		"customBackgroundColor": {
-			"type": "string"
-		},
-		"customTextColor": {
 			"type": "string"
 		}
 	},
